@@ -8,7 +8,12 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Department extends Model
 {
-    protected $fillable = ['company_id', 'name', 'manager_id'];
+    protected $fillable = ['company_id', 'name', 'manager_id', 'active'];
+
+    protected function casts(): array
+    {
+        return ['active' => 'boolean'];
+    }
 
     public function company(): BelongsTo
     {

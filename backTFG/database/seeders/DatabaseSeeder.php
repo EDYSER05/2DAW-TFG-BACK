@@ -9,26 +9,23 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call([
-            // Catálogos sin dependencias
-            PermissionRoleSeeder::class,
+            // 1. Seeders de base
+            RoleSeeder::class,
             AbsenceTypeSeeder::class,
             IssueTypeSeeder::class,
             DaySeeder::class,
             ShiftSeeder::class,
 
-            // Festivos nacionales — debe ejecutarse ANTES de CompanySeeder
-            // para que el CompanyObserver pueda enlazarlos al crear cada empresa
+            // 2. Festivos nacionales
             HolidaySeeder::class,
 
-            // Usuario administrador del sistema (sin departamento)
+            // 3. Creación admin del sistema
             AdminSeeder::class,
 
-            // Empresas → departamentos → managers → empleados
-            // El CompanyObserver inserta automáticamente los festivos nacionales
-            // en company_holiday al crear cada empresa
+            // 4. Empresas con sus owners -> departamentos -> managers/hr -> empleados
             CompanySeeder::class,
 
-            // Asignación de turnos a todos los usuarios
+            // 5. Turnos semanales para todos los usuarios
             UserShiftSeeder::class,
         ]);
     }

@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class AbsenceRequest extends Model
 {
@@ -21,8 +21,8 @@ class AbsenceRequest extends Model
     protected function casts(): array
     {
         return [
-            'start_date'   => 'date',
-            'end_date'     => 'date',
+            'start_date' => 'date',
+            'end_date' => 'date',
             'request_date' => 'datetime',
         ];
     }
@@ -37,8 +37,8 @@ class AbsenceRequest extends Model
         return $this->belongsTo(AbsenceType::class);
     }
 
-    public function approval(): HasOne
+    public function approvals(): HasMany
     {
-        return $this->hasOne(Approval::class);
+        return $this->hasMany(Approval::class);
     }
 }

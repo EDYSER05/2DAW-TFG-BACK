@@ -2,35 +2,51 @@
 
 namespace Database\Factories;
 
+use App\Models\Role;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
- */
 class UserFactory extends Factory
 {
     public function definition(): array
     {
         return [
-            // department_id y role_id los sobreescribe UserSeeder
-            'department_id'       => 1,
-            'role_id'             => 3,
-            'name'                => fake('es_ES')->firstName(),
-            'last_name'           => fake('es_ES')->lastName() . ' ' . fake('es_ES')->lastName(),
-            'email'               => fake()->unique()->safeEmail(),
-            'password'            => Hash::make('password'),
-            'hire_date'           => fake()->dateTimeBetween('-8 years', '-6 months')->format('Y-m-d'),
-            'active'              => fake()->boolean(90), // 90 % activos
-            'email_verified_at'   => now(),
-            'last_login_at'       => fake()->dateTimeBetween('-30 days', 'now'),
+            'department_id' => null,
+            'role_id' => Role::where('name', 'employee')->value('id'),
+            'name' => fake('es_ES')->firstName(),
+            'last_name' => fake('es_ES')->lastName() . ' ' . fake('es_ES')->lastName(),
+            'email' => fake()->unique()->safeEmail(),
+            'password' => Hash::make('password'),
+            'hire_date' => now(),
+            'active' => true,
+            'must_change_password' => false,
+            'email_verified_at' => now(),
+            'last_login_at' => now(),
         ];
     }
 
-    /** Estado para usuarios inactivos */
+    public function admin(): static
+    {
+        return $this->state(fn() => ['role_id' => fn() => Role::where('name', 'admin')->value('id')]);
+    }
+
+    public function owner(): static
+    {
+        return $this->state(fn() => ['role_id' => fn() => Role::where('name', 'owner')->value('id')]);
+    }
+
+    public function manager(): static
+    {
+        return $this->state(fn() => ['role_id' => fn() => Role::where('name', 'manager')->value('id')]);
+    }
+
+    public function hr(): static
+    {
+        return $this->state(fn() => ['role_id' => fn() => Role::where('name', 'hr')->value('id')]);
+    }
+
     public function inactive(): static
     {
-        return $this->state(fn () => ['active' => false]);
+        return $this->state(fn() => ['active' => false]);
     }
 }

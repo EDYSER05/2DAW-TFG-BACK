@@ -8,11 +8,12 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
     /** @use HasFactory<UserFactory> */
-    use HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable;
 
     protected $fillable = [
         'department_id',
@@ -23,6 +24,7 @@ class User extends Authenticatable
         'password',
         'hire_date',
         'active',
+        'must_change_password',
         'email_verified_at',
         'last_login_at',
     ];
@@ -33,9 +35,10 @@ class User extends Authenticatable
     {
         return [
             'email_verified_at' => 'datetime',
-            'last_login_at'     => 'datetime',
-            'password'          => 'hashed',
-            'active'            => 'boolean',
+            'last_login_at' => 'datetime',
+            'password' => 'hashed',
+            'active' => 'boolean',
+            'must_change_password' => 'boolean',
         ];
     }
 
@@ -79,8 +82,13 @@ class User extends Authenticatable
         return $this->hasMany(Notification::class);
     }
 
-    public function auditLogs(): HasMany
+    public function isAdmin(): bool
     {
-        return $this->hasMany(AuditLog::class);
+        return $this->role?->name === 'admin';
+    }
+
+    public function isOwner(): bool
+    {
+        return $this->role?->name === 'owner';
     }
 }

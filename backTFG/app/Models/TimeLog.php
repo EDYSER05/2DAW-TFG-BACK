@@ -13,8 +13,8 @@ class TimeLog extends Model
     protected function casts(): array
     {
         return [
-            'date'      => 'date',
-            'check_in'  => 'datetime',
+            'date' => 'date',
+            'check_in' => 'datetime',
             'check_out' => 'datetime',
         ];
     }

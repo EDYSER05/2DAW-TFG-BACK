@@ -5,13 +5,24 @@ namespace App\Models;
 use App\Observers\CompanyObserver;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 #[ObservedBy([CompanyObserver::class])]
 class Company extends Model
 {
-    protected $fillable = ['name', 'tax_id', 'address'];
+    protected $fillable = ['owner_id', 'name', 'tax_id', 'address', 'active'];
+
+    protected function casts(): array
+    {
+        return ['active' => 'boolean'];
+    }
+
+    public function owner(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'owner_id');
+    }
 
     public function departments(): HasMany
     {

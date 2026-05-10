@@ -3,6 +3,12 @@
     "name": "Acme Corporation S.L.",
     "tax_id": "B12345678",
     "address": "Calle Gran Vía 28, 28013 Madrid, España",
+    "owner": {
+      "name": "Roberto",
+      "last_name": "Acme Fuentes",
+      "email": "owner@acme.com",
+      "hire_date": "2010-01-01"
+    },
     "departments": [
       {
         "name": "Human Resources",
@@ -13,9 +19,24 @@
           "hire_date": "2019-03-15"
         },
         "employees": [
-          { "name": "Elena",    "last_name": "García Sanz",       "email": "elena.garcia@acme.com",       "hire_date": "2020-05-12" },
-          { "name": "Tomás",   "last_name": "Ruiz Blanco",        "email": "tomas.ruiz@acme.com",         "hire_date": "2021-09-01" },
-          { "name": "Isabel",  "last_name": "Pérez Molina",       "email": "isabel.perez@acme.com",       "hire_date": "2022-03-14" }
+          {
+            "name": "Elena",
+            "last_name": "García Sanz",
+            "email": "elena.garcia@acme.com",
+            "hire_date": "2020-05-12"
+          },
+          {
+            "name": "Tomás",
+            "last_name": "Ruiz Blanco",
+            "email": "tomas.ruiz@acme.com",
+            "hire_date": "2021-09-01"
+          },
+          {
+            "name": "Isabel",
+            "last_name": "Pérez Molina",
+            "email": "isabel.perez@acme.com",
+            "hire_date": "2022-03-14"
+          }
         ]
       },
       {
@@ -27,10 +48,30 @@
           "hire_date": "2018-07-01"
         },
         "employees": [
-          { "name": "Rubén",   "last_name": "Castro Herrero",     "email": "ruben.castro@acme.com",       "hire_date": "2019-11-05" },
-          { "name": "Nuria",   "last_name": "Vidal Campos",       "email": "nuria.vidal@acme.com",        "hire_date": "2020-08-20" },
-          { "name": "Diego",   "last_name": "Moreno Rivas",       "email": "diego.moreno@acme.com",       "hire_date": "2021-04-15" },
-          { "name": "Lucía",   "last_name": "Jiménez Cortés",     "email": "lucia.jimenez@acme.com",      "hire_date": "2022-01-10" }
+          {
+            "name": "Rubén",
+            "last_name": "Castro Herrero",
+            "email": "ruben.castro@acme.com",
+            "hire_date": "2019-11-05"
+          },
+          {
+            "name": "Nuria",
+            "last_name": "Vidal Campos",
+            "email": "nuria.vidal@acme.com",
+            "hire_date": "2020-08-20"
+          },
+          {
+            "name": "Diego",
+            "last_name": "Moreno Rivas",
+            "email": "diego.moreno@acme.com",
+            "hire_date": "2021-04-15"
+          },
+          {
+            "name": "Lucía",
+            "last_name": "Jiménez Cortés",
+            "email": "lucia.jimenez@acme.com",
+            "hire_date": "2022-01-10"
+          }
         ]
       },
       {
@@ -42,9 +83,24 @@
           "hire_date": "2020-01-10"
         },
         "employees": [
-          { "name": "Adrián",  "last_name": "Muñoz Cano",         "email": "adrian.munoz@acme.com",       "hire_date": "2021-06-01" },
-          { "name": "Carmen",  "last_name": "Navarro Ibáñez",     "email": "carmen.navarro@acme.com",     "hire_date": "2022-09-15" },
-          { "name": "Sergio",  "last_name": "Torres Palomino",    "email": "sergio.torres@acme.com",      "hire_date": "2023-02-20" }
+          {
+            "name": "Adrián",
+            "last_name": "Muñoz Cano",
+            "email": "adrian.munoz@acme.com",
+            "hire_date": "2021-06-01"
+          },
+          {
+            "name": "Carmen",
+            "last_name": "Navarro Ibáñez",
+            "email": "carmen.navarro@acme.com",
+            "hire_date": "2022-09-15"
+          },
+          {
+            "name": "Sergio",
+            "last_name": "Torres Palomino",
+            "email": "sergio.torres@acme.com",
+            "hire_date": "2023-02-20"
+          }
         ]
       },
       {
@@ -56,9 +112,24 @@
           "hire_date": "2017-11-20"
         },
         "employees": [
-          { "name": "Patricia",   "last_name": "Romero Fuentes",  "email": "patricia.romero@acme.com",    "hire_date": "2019-07-08" },
-          { "name": "Alejandro", "last_name": "Alonso Moya",      "email": "alejandro.alonso@acme.com",   "hire_date": "2020-12-03" },
-          { "name": "Beatriz",   "last_name": "Herrera Gallego",  "email": "beatriz.herrera@acme.com",    "hire_date": "2021-10-15" }
+          {
+            "name": "Patricia",
+            "last_name": "Romero Fuentes",
+            "email": "patricia.romero@acme.com",
+            "hire_date": "2019-07-08"
+          },
+          {
+            "name": "Alejandro",
+            "last_name": "Alonso Moya",
+            "email": "alejandro.alonso@acme.com",
+            "hire_date": "2020-12-03"
+          },
+          {
+            "name": "Beatriz",
+            "last_name": "Herrera Gallego",
+            "email": "beatriz.herrera@acme.com",
+            "hire_date": "2021-10-15"
+          }
         ]
       }
     ]
@@ -67,6 +138,12 @@
     "name": "TechNova Solutions S.A.",
     "tax_id": "A87654321",
     "address": "Av. Diagonal 211, 08018 Barcelona, España",
+    "owner": {
+      "name": "Sara",
+      "last_name": "Nova Castelló",
+      "email": "owner@technova.com",
+      "hire_date": "2015-06-01"
+    },
     "departments": [
       {
         "name": "Product",
@@ -77,9 +154,24 @@
           "hire_date": "2021-04-05"
         },
         "employees": [
-          { "name": "Fernando",  "last_name": "Iglesias Vera",    "email": "fernando.iglesias@technova.com",  "hire_date": "2022-01-17" },
-          { "name": "Verónica", "last_name": "Molina Esteve",     "email": "veronica.molina@technova.com",    "hire_date": "2022-08-01" },
-          { "name": "Marcos",   "last_name": "Delgado Soler",     "email": "marcos.delgado@technova.com",     "hire_date": "2023-03-20" }
+          {
+            "name": "Fernando",
+            "last_name": "Iglesias Vera",
+            "email": "fernando.iglesias@technova.com",
+            "hire_date": "2022-01-17"
+          },
+          {
+            "name": "Verónica",
+            "last_name": "Molina Esteve",
+            "email": "veronica.molina@technova.com",
+            "hire_date": "2022-08-01"
+          },
+          {
+            "name": "Marcos",
+            "last_name": "Delgado Soler",
+            "email": "marcos.delgado@technova.com",
+            "hire_date": "2023-03-20"
+          }
         ]
       },
       {
@@ -91,9 +183,24 @@
           "hire_date": "2022-09-01"
         },
         "employees": [
-          { "name": "Rocío",    "last_name": "Campos Vega",       "email": "rocio.campos@technova.com",    "hire_date": "2023-04-10" },
-          { "name": "Iván",     "last_name": "Ortega Bravo",      "email": "ivan.ortega@technova.com",     "hire_date": "2023-07-25" },
-          { "name": "Cristina", "last_name": "Guerrero Nieto",    "email": "cristina.guerrero@technova.com","hire_date": "2024-01-08" }
+          {
+            "name": "Rocío",
+            "last_name": "Campos Vega",
+            "email": "rocio.campos@technova.com",
+            "hire_date": "2023-04-10"
+          },
+          {
+            "name": "Iván",
+            "last_name": "Ortega Bravo",
+            "email": "ivan.ortega@technova.com",
+            "hire_date": "2023-07-25"
+          },
+          {
+            "name": "Cristina",
+            "last_name": "Guerrero Nieto",
+            "email": "cristina.guerrero@technova.com",
+            "hire_date": "2024-01-08"
+          }
         ]
       },
       {
@@ -105,9 +212,24 @@
           "hire_date": "2020-06-15"
         },
         "employees": [
-          { "name": "Miguel",    "last_name": "Reyes Montoya",    "email": "miguel.reyes@technova.com",    "hire_date": "2021-11-01" },
-          { "name": "Esperanza","last_name": "Medina Ríos",       "email": "esperanza.medina@technova.com","hire_date": "2022-05-30" },
-          { "name": "Jorge",    "last_name": "Aguilar Benítez",   "email": "jorge.aguilar@technova.com",   "hire_date": "2023-09-12" }
+          {
+            "name": "Miguel",
+            "last_name": "Reyes Montoya",
+            "email": "miguel.reyes@technova.com",
+            "hire_date": "2021-11-01"
+          },
+          {
+            "name": "Esperanza",
+            "last_name": "Medina Ríos",
+            "email": "esperanza.medina@technova.com",
+            "hire_date": "2022-05-30"
+          },
+          {
+            "name": "Jorge",
+            "last_name": "Aguilar Benítez",
+            "email": "jorge.aguilar@technova.com",
+            "hire_date": "2023-09-12"
+          }
         ]
       }
     ]

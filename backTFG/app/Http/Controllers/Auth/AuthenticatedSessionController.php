@@ -4,44 +4,70 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
-use Illuminate\Http\RedirectResponse;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\View\View;
+use Illuminate\Support\Facades\Hash;
 
 class AuthenticatedSessionController extends Controller
 {
-    /**
-     * Display the login view.
-     */
-    public function create(): View
+    public function store(LoginRequest $request)
     {
-        return view('auth.login');
+        try {
+            $request->authenticate();
+
+            $user = Auth::user();
+            $user->update(['last_login_at' => now()]);
+            $token = $user->createToken('auth_token')->plainTextToken;
+
+            return response()->json([
+                'msg' => 'Login correcto',
+                'token' => $token,
+                'must_change_password' => (bool) $user->must_change_password,
+                'user' => $user,
+            ]);
+        } catch (Exception $e) {
+            return response()->json([
+                'msg' => 'Credenciales incorrectas',
+                'error' => $e->getMessage(),
+            ], 401);
+        }
     }
 
-    /**
-     * Handle an incoming authentication request.
-     */
-    public function store(LoginRequest $request): RedirectResponse
+    public function destroy(Request $request)
     {
-        $request->authenticate();
+        try {
+            $request->user()->currentAccessToken()->delete();
 
-        $request->session()->regenerate();
-
-        return redirect()->intended(route('dashboard', absolute: false));
+            return response()->json(['msg' => 'Sesión cerrada correctamente']);
+        } catch (Exception $e) {
+            return response()->json([
+                'msg' => 'Error al cerrar sesión',
+                'error' => $e->getMessage(),
+            ], 500);
+        }
     }
 
-    /**
-     * Destroy an authenticated session.
-     */
-    public function destroy(Request $request): RedirectResponse
+    public function changePassword(Request $request)
     {
-        Auth::guard('web')->logout();
+        try {
+            $data = $request->validate([
+                'password' => 'required|string|min:8|confirmed',
+            ]);
 
-        $request->session()->invalidate();
+            $user = Auth::guard('sanctum')->user();
 
-        $request->session()->regenerateToken();
+            $user->update([
+                'password' => Hash::make($data['password']),
+                'must_change_password' => false,
+            ]);
 
-        return redirect('/');
+            return response()->json(['msg' => 'Contraseña actualizada correctamente']);
+        } catch (Exception $e) {
+            return response()->json([
+                'msg' => 'Error al cambiar la contraseña',
+                'error' => $e->getMessage(),
+            ], 500);
+        }
     }
 }
